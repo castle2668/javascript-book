@@ -6,15 +6,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'JavaScript: Understanding the Weird Parts',
+  title: '克服 JavaScript 的奇怪部分',
   tagline: 'JavaScript is weird',
-  url: 'https://js.sealman.tw',
+  url: 'https://docs.sealman.tw',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/icon.png',
-  organizationName: 'Sealman', // Usually your GitHub org/user name.
-  projectName: 'js-weird-parts', // Usually your repo name.
+  organizationName: 'Sealman234', // Usually your GitHub org/user name.
+  projectName: 'understand-javascript', // Usually your repo name.
 
   presets: [
     [
@@ -40,7 +40,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'JavaScript: Understanding the Weird Parts',
+        title: '克服 JavaScript 的奇怪部分',
         logo: {
           alt: 'My Site Logo',
           src: 'img/icon.png',

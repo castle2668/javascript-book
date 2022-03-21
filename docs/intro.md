@@ -3,46 +3,64 @@ slug: /
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Getting Started
 
-Let's discover **Docusaurus in less than 5 minutes**.
+這個系列文章是 **JavaScript: Understanding the Weird Parts** 課程的學習筆記。
 
-## Getting Started
+## 目錄
 
-Get started by **creating a new site**.
+- #1 Get Started（本篇）
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### 執行環境與詞彙環境
 
-### What you'll need
+這部份的內容有…
 
-- [Node.js](https://nodejs.org/en/download/) version 14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- #2 程式碼底層處理與執行過程
 
-## Generate a new site
+### 型別與運算子
 
-Generate a new Docusaurus site using the **classic template**.
+這部份的內容有…
 
-The classic template will automatically be added to your project after you run the command:
+- #3 型別 (Types)
+- #4 運算子 (Operators)
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+### 物件與函式
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+這部份的內容有…
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+- #5 物件實體語法 (Object Literal Syntax)
+- #6 函式就是物件 (Functions Are Objects)
+- #7 傳值和傳參考
+- #8 物件 × 函式 × this
+- #9 函式參數與 arguments、spread
+- #10 立即呼叫的函式表達式 (IIFEs) 與安全程式碼
 
-## Start your site
+### 函式進階
 
-Run the development server:
+這部份的內容有…
 
-```bash
-cd my-website
-npm run start
-```
+- #11 閉包 (Closure)
+- #12 函式工廠 (Function Factory)
+- #13 回呼函式 (Callback Function)
+- #14 bind()、call() 與 apply()
+- #15 Functional Programming ft. Underscore, Lodash
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+### 建立物件和設定原型
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+這部份的內容有…
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+- #16 物件導向與原型繼承
+- #17 new × 函式建構子 × 原型屬性
+- #18 內建的函式建構子
+- #19 純粹的原型繼承 - Object.create
+- #20 ES6 Class
+
+### 雜談
+
+這部份的內容有…
+
+- #21 解析 toString() 方法 ft. typeof, instanceof
+
+> 歡迎大家閱讀我的學習歷程，也請不吝指教！
+
+![加油](https://i.imgur.com/Xf7ttuI.png)
