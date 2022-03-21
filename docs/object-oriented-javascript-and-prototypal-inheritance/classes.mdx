@@ -12,8 +12,7 @@ sidebar_position: 5
 
 然而，JavaScript ES6 的 Class 卻是一個已經被建立的物件，我們只是再用 new 關鍵字**從這個物件去建立新物件**而已。
 
-不過這也沒問題，畢竟不同程式語言，也沒必要完全照著走嘛 🙄
-但是，這有可能就會造成從其他程式語言轉換過來的人，容易誤解了原型繼承的概念，因為像是習慣寫 Java 的人就會把 Class 當作模版來使用。
+不過這也沒問題，畢竟不同程式語言，也沒必要完全照著走嘛 🙄 但是，這有可能就會造成從其他程式語言轉換過來的人，容易誤解了原型繼承的概念，因為像是習慣寫 Java 的人就會把 Class 當作模版來使用。
 
 總而言之，這篇介紹的 ES6 Class 與前篇介紹的 Object.create，都比第一個講的函式建構子好用許多喔！
 
@@ -44,14 +43,6 @@ console.log(sealman.greet()); // Hi Sealman
 
 這裡使用了 `extends` 來設定原型，它的效果就相當於 `InformalPerson.__proto__ = Person`，所以在這邊 `Person` 就是 `InformalPerson` 的原型。
 
-這邊有一個重點就是 `super` 關鍵字：
-
-- 如果在子類別的 constructor 中使用 `super()`，就會呼叫原型物件的 constructor，如此一來就能夠傳入初始值到原型鏈裡面。
-- 如果想要在子類別中，呼叫父類別的方法來使用，也可以透過 `super` 這個關鍵字。
-  當 `super` 不加括號時，代表把 `super` 當物件使用，此時 `super` 會指向父類別 `Person`。
-
-另外，也可以在子類別中設定一樣的方法名稱，這麼做的話就可以隱藏或覆寫父類別的方法哩！
-
 ```javascript
 class InformalPerson extends Person {
   // 呼叫原型物件的建構子
@@ -76,6 +67,13 @@ console.log(sunny.greetPerson()); // Hi Sunny
 console.log(sunny.greet()); // Yo! Sunny
 ```
 
+這邊有一個重點就是 `super` 關鍵字：
+
+- 如果在子類別的 constructor 中使用 `super()`，就會呼叫原型物件的 constructor，如此一來就能夠傳入初始值到原型鏈裡面
+- 如果想要在子類別中，呼叫父類別的方法來使用，也可以透過 `super` 這個關鍵字。當 `super` 不加括號時，代表把 `super` 當物件使用，此時 `super` 會指向父類別 `Person`
+
+另外，也可以在子類別中設定一樣的方法名稱，這麼做的話可以隱藏或覆寫父類別的方法。
+
 ## 語法糖 (Syntactic Sugar)
 
 我們總共提到了三種「建立物件和設定原型」的方法，但其實這些只是不同的語法表達的方式而已，它們底層的原理都是一樣的。
@@ -88,8 +86,8 @@ console.log(sunny.greet()); // Yo! Sunny
 
 看完這篇文章，我們到底有什麼收穫呢？藉由本文可以理解到…
 
-- 使用 ES6 Class 建立物件和設定原型。
-- 語法糖讓程式更加簡潔，有更高的可讀性。
+- 使用 ES6 Class 建立物件和設定原型
+- 語法糖讓程式更加簡潔，有更高的可讀性
 
 ## References
 

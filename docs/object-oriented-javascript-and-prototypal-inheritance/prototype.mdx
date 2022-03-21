@@ -8,15 +8,15 @@ sidebar_position: 1
 
 ## 古典繼承 vs. 原型繼承
 
-- 繼承 (Inheritance)：一個物件可以取用另一個物件的屬性或方法。
-- 古典繼承 (Classical Inheritance)：出現最久也最受歡迎，應用在 C# 和 Java 等語言，缺點是一旦數量龐大就會很複雜，而且有很多關鍵字要記憶與學習。
-- 原型繼承 (Prototypal Inheritance)：簡單易懂，具有彈性與可擴充性，JavaScript 用原型繼承來分享物件的屬性和方法。
+- 繼承 (Inheritance)：一個物件可以取用另一個物件的屬性或方法
+- 古典繼承 (Classical Inheritance)：出現最久也最受歡迎，應用在 C# 和 Java 等語言，缺點是一旦數量龐大就會很複雜，而且有很多關鍵字要記憶與學習
+- 原型繼承 (Prototypal Inheritance)：簡單易懂，具有彈性與可擴充性，JavaScript 用原型繼承來分享物件的屬性和方法
 
 ## 什麼是原型
 
-- 原型 (Prototype)：所有的物件（包含函式）都有一個 `proto` 屬性，這個屬性會參考到另一個物件，而被參考到的物件就是原型。
-  - 如果在主要物件上找不到想要取用的屬性，就會往原型去找，所以雖然屬性看起來是在主要物件上，但其實是在一個稱為原型鏈的東西上。
-- 原型鏈 (Prototype Chain)：透過原型屬性 `proto` 連結著，讓主要物件在這上面取用屬性和方法。
+- 原型 (Prototype)：所有的物件（包含函式）都有一個 `proto` 屬性，這個屬性會參考到另一個物件，而被參考到的物件就是原型
+  - 如果在主要物件上找不到想要取用的屬性，就會往原型去找，所以雖然屬性看起來是在主要物件上，但其實是在一個稱為原型鏈的東西上
+- 原型鏈 (Prototype Chain)：透過原型屬性 `proto` 連結著，讓主要物件在這上面取用屬性和方法
 
 ![Prototype](https://i.imgur.com/qxzM2yP.png)
 
@@ -44,10 +44,8 @@ console.log(sealman.getFullName()); // (2) Sealman Huang
 console.log(sealman.firstname); // (3) Sealman
 ```
 
-1. 將 `sealman` 的原型屬性設定為 `person`，意思就是 `sealman` 繼承自 `person`。
-   換句話說，就是 `sealman` 原來的本質被設定為 `person`。
-2. 在 `sealman` 裡面找不到 `getFullName` 方法時，會往原型 `proto` 尋找。
-   注意：此時方法中的 `this` 會指向呼叫函式的物件 `sealman`。
+1. 將 `sealman` 的原型屬性設定為 `person`，意思就是 `sealman` 繼承自 `person`。換句話說，就是 `sealman` 原來的本質被設定為 `person`。
+2. 在 `sealman` 裡面找不到 `getFullName` 方法時，會往原型 `proto` 尋找。注意：此時方法中的 `this` 會指向呼叫函式的物件 `sealman`。
 3. 使用 `sealman.firstname` 在 `sealman` 物件找到 `firstname` 之後就會結束了，不會再進入原型鏈。
 
 ## 基本物件
@@ -80,9 +78,9 @@ console.log(d.__proto__.__proto__.__proto__); // null
 
 ## Underscore 的 Reflection 與 Extend 模式
 
-- Extend：另一個建立物件的函式，它不是 JavaScript 的原生方法，而是資源庫 Underscore 裡面出現的方法，在其他資源庫中也有類似的方法喔。
-- Reflection：簡單來說就是讓 JavaScript 的物件可以看見與改變自己的屬性與方法。
-- 藉由 Reflection，我們才能做到 Extend。
+- Extend：另一個建立物件的函式，它不是 JavaScript 的原生方法，而是資源庫 Underscore 裡面出現的方法，在其他資源庫中也有類似的方法
+- Reflection：簡單來說就是讓 JavaScript 的物件可以看見與改變自己的屬性與方法
+- 藉由 Reflection，我們才能做到 Extend
 
 我們來看看 Underscore 資源庫的 extend 方法是如何運作的。
 
@@ -90,7 +88,7 @@ console.log(d.__proto__.__proto__.__proto__); // null
 
 首先 Reflection 的運行原理就類似使用**基本物件**的 `hasOwnProperty` 方法，會去檢查該物件是否有某個屬性或方法，而且跟 `for...in` 不一樣，這個方法並未檢查物件的原型鏈。
 
-> 這裡只是概念上差不多而已，與 Underscore 的原始碼當然是不一樣的。
+> 為了解釋觀念，以下程式碼只是在概念上差不多而已，與 Underscore 的原始碼當然是不一樣的。
 
 ```javascript
 var person = {
@@ -123,7 +121,7 @@ for (var prop in sealman) {
 ```
 
 1. 使用 `for...in` 遍歷物件裡的每個東西，除了物件 `sealman` 本身的屬性和方法，`for...in` 也會取得原型上的屬性和方法。
-2. 如果只想取得自己本身的東西，可以使用**基本物件**的 `hasOwnProperty` 方法，而這邊其實就類似 Reflect 的動作了。
+2. 如果只想取得自己本身的東西，可以使用**基本物件**的 `hasOwnProperty` 方法，這個就類似於 Reflect 的動作。
 
 知道了 Reflection 的概念後，我們來看看怎麼使用 Extend 這個模式。
 
@@ -157,9 +155,9 @@ console.log(sealman);
 
 看完這篇文章，我們到底有什麼收穫呢？藉由本文可以理解到…
 
-- JavaScript 原型繼承與原型鏈的概念。
-- 基本物件是原型鏈的最末端。
-- 資源庫 Underscroe 裡面的 Reflection 與 Extend 模式。
+- JavaScript 原型繼承與原型鏈的概念
+- 基本物件是原型鏈的最末端
+- 資源庫 Underscroe 裡面的 Reflection 與 Extend 模式
 
 ## References
 

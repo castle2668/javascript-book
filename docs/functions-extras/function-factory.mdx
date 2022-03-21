@@ -8,7 +8,7 @@ sidebar_position: 2
 
 ## 重載函式 (Function Overloading)
 
-- 重載函式：讓函式能夠有不同數量的參數。
+- 重載函式：讓函式能夠有不同數量的參數
 
 其實 JavaScript 沒有重載函式的概念，因為 JavaScript 中的函式就是物件，無法像其他程式語言一樣做到重載函式，不過 JavaScript 卻有一級函式的概念，因此也可以做到相似的函式處理。
 
@@ -31,8 +31,7 @@ greet('Sealman', 'Huang', 'es');
 
 我們可以再加強以上寫法，使用類似重載函式的寫法，讓函式不用傳入這麼多資訊。
 
-例如：另外創造兩個函式，再將特定的參數值 `en` 和 `es` 分別先帶入函式的內容中。
-完成後，如果要用英文打招呼就呼叫 `greetEnglish` 函式，用西班牙語則呼叫 `greetSpanish` 函式，這樣在使用時就不用考慮 `language` 這個參數了。
+例如：另外創造兩個函式，再將特定的參數值 `en` 和 `es` 分別先帶入函式的內容中。完成後，如果要用英文打招呼就呼叫 `greetEnglish` 函式，用西班牙語則呼叫 `greetSpanish` 函式，這樣在使用時就不用考慮 `language` 這個參數了。
 
 ```javascript
 function greetEnglish(firstname, lastname) {
@@ -51,11 +50,11 @@ greetSpanish('Sealman', 'Huang');
 
 ## 函式工廠 (Function Factory)
 
-- 工廠函式：會回傳一個幫我做事的函式。
+- 工廠函式：會回傳一個幫我做事的函式
 
 工廠函式 `makeGreeting` 會回傳一個函式給我們，這個函式的邏輯與剛才的 `greet` 函式相同，只差在參數 `language` 被移到外部函式。
 
-當內部函式被呼叫時，`language` 會被包在閉包裡面，它是一個[自由變數](https://sealman234.github.io/2021-04-01-javascript-closure/)，內部函式隨著範圍鏈往外找就可以參考到它。
+當內部函式被呼叫時，`language` 會被包在閉包裡面，它是一個[自由變數](https://docs.sealman.tw/functions-extras/closure#%E9%96%89%E5%8C%85%E8%88%87%E8%87%AA%E7%94%B1%E8%AE%8A%E6%95%B8)，內部函式隨著範圍鏈往外找就可以參考到它。
 
 ```javascript
 function makeGreeting(language) {
@@ -88,8 +87,8 @@ greetSpanish('Sealman', 'Huang');
 
 看完這篇文章，我們到底有什麼收穫呢？藉由本文可以理解到…
 
-- 重載函式的概念以及在 JavaScript 中類似的撰寫模式。
-- 瞭解函式工廠的概念，使用其他函式創造函式。
+- 重載函式的概念以及在 JavaScript 中類似的撰寫模式
+- 瞭解函式工廠的概念，使用其他函式創造函式
 
 ## References
 

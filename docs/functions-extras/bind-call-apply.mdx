@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# 克服 JavaScript 的奇怪部分 #14 bind()、call() 與 apply()
+# bind()、call() 與 apply()
 
 本文主要內容為探討 bind()、call() 與 apply() 的相關知識，這三個函式都與 this 有關，可以用來控制 this 變數。
 
@@ -29,10 +29,10 @@ var person = {
 
 ## bind()
 
-- `.bind()` 會創造一份你要呼叫的函式的拷貝（沒有執行函式）。
-- 傳入的參數就是 this 指向的東西。
+- `.bind()` 會創造一份你要呼叫的函式的拷貝（沒有執行函式）
+- 傳入的參數就是 this 指向的東西
 
-如果透過 this 去取用物件中的 `getFullName` 會出現錯誤，因為此時的 this 是指向全域物件。
+例如：如果透過 this 去取用物件中的 `getFullName` 會出現錯誤，因為此時的 this 是指向全域物件。
 
 ```javascript
 var logName = function (lang1, lang2) {
@@ -42,9 +42,9 @@ var logName = function (lang1, lang2) {
 logName(); // Uncaught TypeError: this.getFullName is not a function
 ```
 
-我們可以用 `bind()` 控制 this 的指向，讓 this 指向 `person` 物件。
+我們可以用 `bind()` 控制 this 的指向，強迫讓 this 指向 `person` 物件。
 
-使用上，不是去呼叫 `logName` 函式，而是取用 `logName` 這個函式**物件**裡的 bind 方法，寫成 `logName.bind()`，然後傳入想要讓 this 變數指向的物件。
+使用上，不是去呼叫 `logName` 函式，而是取用 `logName` 這個**函式物件**裡的 bind 方法，寫成 `logName.bind()`，然後傳入想要讓 this 變數指向的物件。
 
 使用後，`bind(person)` 會複製前面的 `logName` 函式物件，當 JavaScript 引擎看到傳入括號裡的 `person` 物件時，就會判斷 this 要指向這個物件。
 
@@ -73,9 +73,9 @@ logName(); // Logged: Sealman Huang
 
 ## call()
 
-- 由 `.call()` 做執行的動作，而不是執行前面接的函式。
-- 第一個參數是 this 變數指向的物件。
-- 剩下的參數是傳給函式的參數。
+- 由 `.call()` 做執行的動作，而不是執行前面接的函式
+- 第一個參數是 this 變數指向的物件
+- 剩下的參數是傳給函式的參數
 
 ```javascript
 var logName = function (lang1, lang2) {
@@ -88,7 +88,7 @@ logName.call(person, 'zh-tw', 'en');
 // Arguments: zh-tw en
 ```
 
-另外，我們也可以在創造函式後立刻執行，類似立即函式的概念，但不是用 IIFE，而是用 `.call()` 來完成。
+另外，我們也可以在創造函式後立刻執行，有點類似立即函式的概念，但這邊不是用 IIFE 執行函式的，而是用 `.call()` 來完成。
 
 ```javascript
 (function (lang1, lang2) {
@@ -99,9 +99,9 @@ logName.call(person, 'zh-tw', 'en');
 
 ## apply()
 
-- 與 `.call()` 做的事情幾乎相同，差別在於第二個傳入的參數必須是「陣列」型別。
-- 第一個參數是 this 變數指向的物件。
-- 第二個參數是傳給函式的參數，型別必須為陣列。
+- 與 `.call()` 做的事情幾乎相同，差別在於第二個傳入的參數必須是「陣列」型別
+- 第一個參數是 this 變數指向的物件
+- 第二個參數是傳給函式的參數，型別必須為陣列
 
 ```javascript
 logName.apply(person, ['zh-tw', 'en']);
@@ -126,7 +126,7 @@ logName.apply(person, ['zh-tw', 'en']);
 
 ### 函式借用 (Function Borrowing)
 
-- 函式借用：借用其他物件的方法。
+- 函式借用：借用其他物件的方法
 
 假設我們有另一個類似 `person` 的物件叫做 `person2`，它的值不同，也沒有 `getFullName` 方法。
 
@@ -146,14 +146,13 @@ console.log(person.getFullName.apply(person2));
 
 ### Function Currying
 
-- Function Currying：建立一個函式的拷貝，並且設定預設的參數。
-- 在數學運算上很有用，像是資料庫需要做數學運算，可以有基本的函式，再根據它放入預設的參數，是一個很好的 bind 用法。
+- Function Currying：建立一個函式的拷貝，並且設定預設的參數
+- 在數學運算上很有用，像是資料庫需要做數學運算，可以有基本的函式，再根據它放入預設的參數，是一個很好的 bind 用法
 
 假設函式 `multiply` 會將傳入的兩個參數相乘，如果我們用 `.bind()` 創造一個拷貝，第一個參數 this 我們先不管它，如果我們給一個參數值作為第二個參數，會發生什麼事情呢？
 
-剛才介紹 bind 只有提到第一個參數，就是 bind 會創造一個拷貝，並且將 this 指向第一個參數放的物件。
+剛才介紹 bind 只有提到第一個參數，就是 bind 會創造一個拷貝，並且將 this 指向第一個參數放的物件。然而，如果有第二個參數，它會被設定為拷貝出來的那個函式的**永久參數值**。
 
-然而，如果有第二個參數，它會被設定為拷貝出來的那個函式的**永久參數值**。
 像是以下範例當中，拷貝函式 `multiplyByTwo` 的第一個參數就會永遠被取代為 2。
 
 ```javascript
@@ -192,9 +191,9 @@ console.log(multiplyByTwo(4)); // 20
 
 看完這篇文章，我們到底有什麼收穫呢？藉由本文可以理解到…
 
-- 瞭解函式物件的 bind、call 與 apply 這三個方法的概念。
-- Function Borrowing：透過 call 或 apply 借用其他物件裡面的方法。
-- 認識 Function Currying 這個很棒的 bind 應用方法。
+- 瞭解函式物件的 bind、call 與 apply 這三個方法的概念
+- Function Borrowing：透過 call 或 apply 借用其他物件裡面的方法
+- 認識 Function Currying 這個很棒的 bind 應用方法
 
 ## References
 

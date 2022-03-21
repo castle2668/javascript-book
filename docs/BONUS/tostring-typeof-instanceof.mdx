@@ -9,6 +9,7 @@ sidebar_position: 1
 ## 使用物件的 toString() 檢測各種型別
 
 JavaScript 中有個關鍵字 `typeof`，顧名思義，它能夠回傳型別。
+
 然而如果要精準地判斷型別，我們應該使用物件的 `toString()` 而不是 `typeof`，為什麼呢？
 
 ### 使用 typeof 判斷型別
@@ -35,6 +36,7 @@ console.log(typeof z); // function
 ### 使用 toString() 判斷型別
 
 所有的純值（基本型別）除了 null 跟 undefined 之外都有 `toString()` 方法。
+
 這些 `toString()` 方法是從 `Object.prototype` 中繼承下來的，但是很多東西不會是一成不變的，繼承後 JavaScript 重寫了這個方法讓它更加實用。
 
 舉例來說，兒子 Array 繼承自爸爸 Object，繼承時 JavaScript 在 `Array.prototype` 上重寫了 `toString()` 方法，所以使用 `arr.toString()` 時，實際調用的是 `Array.prototype.toString()`。
@@ -53,6 +55,7 @@ console.log(num.toString(2)); // 10 進位轉為 2 進位 => 1010
 ```
 
 至於物件當然也可以使用 `toString()`，但是結果會顯示成 `"[object Object]"` 這種樣子。
+
 想要看到 `key: value` 還是得用 Loop，或是使用 `JSON.stringify()` 也可以看到完整 Object 的一行字串。
 
 ```javascript
@@ -68,6 +71,7 @@ console.log(JSON.stringify(c)); // {"firstname":"Sealman"}
 ```
 
 如果是陣列呢？陣列也是一種物件，所以基本上跟物件的結果一樣。
+
 差別在於陣列的 `toString()` 方法會試著將陣列中的**物件**轉為字串，此時如果是「空陣列」就會等於陣列中沒有物件，結果就會回傳空字串。
 
 ```javascript
@@ -80,7 +84,7 @@ console.log(d.toString()); // [object Object]
 console.log(JSON.stringify(d)); // "[{}]"
 ```
 
-到這裡陣列和物件使用 `toString()` 的結果都是 `"[object Object]"`，所以問題還沒有解決，到底要怎麼檢驗區分出 Array 跟 Object 呢？
+然而，到目前為止，我們可以發現陣列和物件使用 `toString()` 的結果都是 `"[object Object]"`，所以問題還沒有解決，到底要怎麼檢驗區分出 Array 跟 Object 呢？
 
 ### 使用 Object.prototype.toString.call() 判斷型別
 
@@ -91,18 +95,20 @@ console.log(JSON.stringify(d)); // "[{}]"
 #### toString() 與 Object.prototype.toString() 有何不同
 
 Q：什麼是 `Object.prototype.toString()`？
+
 A：內建的函式建構子加上 `.prototype` 就是指它們的原型，在原型上有內建方法，像是物件的原型上有 `toString()` 方法。
 
 - Object、Array、Date、Function → 內建的函式建構子
 - `Object.prototype` → 預設的原生原型
+
+  ```javascript
+  console.log(Object.prototype); // 基本物件
+  console.log(Object.prototype.__proto__); // null
+  ```
+
 - `Object.prototype.toString()` → 內建方法
 
-```javascript
-console.log(Object.prototype); // 基本物件
-console.log(Object.prototype.__proto__); // null
-```
-
-因為物件的 `toString()` 方法會返回 **[object type]**，其中 type 是指這個物件的類別，所以我們可以發現這個 type 就能拿來區別物件與陣列。
+因為物件的 `toString()` 方法會返回 **[object "type"]**，其中 type 是指這個物件的類別，所以我們可以發現這個 type 就能拿來區別物件與陣列。
 
 我們讓每個東西都通過 `Object.prototype.toString()` 檢測，這個方法能判斷所有的型別喔！
 
@@ -148,11 +154,11 @@ console.log(typeof null); // object
 
 看完這篇文章，我們到底有什麼收穫呢？藉由本文可以理解到…
 
-- 如何使用 `typeof`。
-- 三種判斷型別的方法，以及哪一個能夠最精確地判斷型別。
-- JavaScript 中 `toString()` 與 `Object.prototype.toString()` 有何不同。
-- 如何使用 `instanceof`。
-- JavaScript 萬年 bug - `typeof null`。
+- 如何使用 `typeof`
+- 三種判斷型別的方法，以及哪一個能夠最精確地判斷型別
+- JavaScript 中 `toString()` 與 `Object.prototype.toString()` 有何不同
+- 如何使用 `instanceof`
+- JavaScript 萬年 bug - `typeof null`
 
 ## References
 
