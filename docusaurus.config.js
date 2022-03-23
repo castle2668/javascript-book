@@ -63,10 +63,10 @@ const config = {
                 label: 'JavaScript: Understanding the Weird Parts',
                 to: '/',
               },
-              {
-                label: 'React Complete Note',
-                href: 'https://react.sealman.tw',
-              },
+              // {
+              //   label: 'React Complete Note',
+              //   href: 'https://react.sealman.tw',
+              // },
             ],
           },
           {
