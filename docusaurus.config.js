@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: '克服 JavaScript 的奇怪部分',
   tagline: 'JavaScript is weird',
-  url: 'https://docs.sealman.tw',
+  url: 'https://javascript.sealman.tw',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -62,6 +62,10 @@ const config = {
               {
                 label: 'JavaScript: Understanding the Weird Parts',
                 to: '/',
+              },
+              {
+                label: 'React Complete Note',
+                href: 'https://react.sealman.tw',
               },
             ],
           },
