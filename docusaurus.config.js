@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'JavaScript Complete Notes',
+  title: "Sealman's JavaScript Book",
   tagline: "JavaScript Is Weird. And That's Why We Love It.",
   url: 'https://javascript.sealman.tw',
   baseUrl: '/',
@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/icon.png',
   organizationName: 'Sealman234', // Usually your GitHub org/user name.
-  projectName: 'understand-javascript', // Usually your repo name.
+  projectName: 'javascript-book', // Usually your repo name.
   i18n: {
     defaultLocale: 'zh-TW',
     locales: ['zh-TW'],
@@ -64,11 +64,11 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: "Sealman's JavaScript Notes",
+                label: "Sealman's JavaScript Book",
                 to: '/',
               },
               {
-                label: "Sealman's React Notes",
+                label: "Sealman's React Book",
                 href: 'https://react.sealman.tw',
               },
             ],
@@ -78,7 +78,7 @@ const config = {
             items: [
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/castle2668',
+                href: 'https://twitter.com/Sealman234',
               },
             ],
           },
@@ -92,7 +92,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © 2019-${new Date().getFullYear()} Sealman. All rights reserved.`,
       },
       prism: {
         theme: lightCodeTheme,
