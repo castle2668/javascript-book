@@ -16,8 +16,8 @@ const config = {
   organizationName: 'Sealman234', // Usually your GitHub org/user name.
   projectName: 'javascript-book', // Usually your repo name.
   i18n: {
-    defaultLocale: 'zh-TW',
-    locales: ['zh-TW'],
+    defaultLocale: 'zh-Hant-TW',
+    locales: ['zh-Hant-TW'],
   },
 
   presets: [
@@ -50,6 +50,11 @@ const config = {
           src: 'img/icon.png',
         },
         items: [
+          {
+            href: 'https://www.sealman.tw',
+            label: 'Blog',
+            position: 'right',
+          },
           {
             href: 'https://github.com/sealman234',
             label: 'GitHub',
@@ -85,6 +90,10 @@ const config = {
           {
             title: 'More',
             items: [
+              {
+                label: 'Blog',
+                href: 'https://www.sealman.tw',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/sealman234',
