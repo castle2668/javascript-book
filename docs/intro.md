@@ -1,6 +1,7 @@
 ---
 slug: /
 sidebar_position: 1
+keywords: [about, book, javascript]
 ---
 
 # Getting Started
