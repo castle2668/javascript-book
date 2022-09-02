@@ -58,7 +58,7 @@ const config = {
         },
       ],
       navbar: {
-        title: "Sealman's JavaScript Notes",
+        title: "Sealman's JavaScript Book",
         logo: {
           alt: 'My Site Logo',
           src: 'img/icon.png',
